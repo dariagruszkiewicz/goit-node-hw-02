@@ -8,9 +8,15 @@ const {
 	getCurrentUser,
 	auth,
 	updateAvatar,
+	verify,
+	reVerify,
 } = require("../controller/user");
 
 router.post("/signup", signUpUser);
+
+router.get("/verify/:verificationToken", verify);
+
+router.post("/verify", reVerify);
 
 router.post("/login", loginUser);
 
