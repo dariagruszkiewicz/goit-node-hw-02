@@ -6,7 +6,7 @@ const sendEmail = async (email, verificationToken) => {
 		to: email,
 		from: process.env.SENDGRID_API_EMAIL,
 		subject: "Confirm your email, please",
-		html: `<a href="http://localhost:3000/api/user/verify/${verificationToken}">Click here to verify your email</a>`,
+		html: `<a href="http://localhost:3000/api/users/verify/${verificationToken}">Click here to verify your email</a>`,
 	};
 
 	try {

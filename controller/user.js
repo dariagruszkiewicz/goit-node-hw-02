@@ -94,6 +94,11 @@ const loginUser = async (req, res, next) => {
 			message: `${validation.error.details[0].message}`,
 		});
 	}
+
+	if (!user.verify) {
+		return res.status(401).json({ message: "Email is not verified" });
+	}
+
 	if (!user) {
 		return res.status(400).json({
 			status: "error",
@@ -202,7 +207,7 @@ const verify = async (req, res, next) => {
 
 		await User.findByIdAndUpdate(user._id, {
 			verify: true,
-			verificationToken: "",
+			verificationToken: " ",
 		});
 
 		res.status(200).json({
